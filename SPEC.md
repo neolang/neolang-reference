@@ -32,6 +32,7 @@ Assume everything in the language is borrowed from C that is not specified here.
 
 - New dynamic pointer conventions
 - `char` is unsigned by default
+- All type casting must be explicit
 
 ## Syntax
 
@@ -65,6 +66,16 @@ Dynamic pointers to data must be declared using the keyword `dynamic`. For examp
 
 Because of this `malloc` and `free` have been moved to build in keywords
 
+### Creating new memory
+
+Due to the fact that some implementations of the standard library require the `new` function to optionally accept a byte length, it does. The syntax for doing so looks like this:
+
+`dynamic int * numbers = new type(*numbers), 3`
+
+After zeroing out the newly created data, it will look like the following in memory:
+
+`[0,0,0]`
+
 ### Template variables
 
 Template variables are declared with the following syntax:
@@ -74,8 +85,8 @@ Template variables are declared with the following syntax:
 For example:
 
 ```
-template X;
-byte len(X to_find_len) {
+template T<>;
+byte len(T to_find_len) {
     return (char *)(&to_find_len+1) - (char *)(&to_find_len);
 }
 ```
