@@ -7,8 +7,9 @@ int fib(int x) {
         return fib(x-1)+fib(x-2);
     }
 }
+
 int main() {
     int x = 10;
-    io::printf("fib(%i) = %i\n", x fib(x));
+    io::printf("fib(%i) = %i\n", x, fib(x));
     return 1;
 }
