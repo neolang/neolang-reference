@@ -10,6 +10,6 @@ int fib(int x) {
 
 int main() {
     int x = 10;
-    io::printf("fib(%i) = %i\n", x, fib(x));
+    io::Printf("fib(%i) = %i\n", x, fib(x));
     return 1;
 }
