@@ -85,7 +85,7 @@ Because of this `malloc` and `free` have been moved to built in keywords
 
 Due to the fact that some implementations of the standard library require the `new` function to accept a byte length, it does. The syntax for doing so looks like this:
 
-`dynamic int * numbers = (int *)new 3;`
+`dynamic int * numbers = std::mem::new<type(*numbers)>(1);`
 
 After zeroing out the newly created data, it will look like this in memory:
 
