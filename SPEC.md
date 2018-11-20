@@ -17,7 +17,6 @@ Assume everything in the language is borrowed from C that is not specified here.
 
 - Template variables
 - Raising and declaring errors but more strict
-- Public only inheritance
 
 ### Borrowed from golang
 
@@ -31,7 +30,7 @@ Assume everything in the language is borrowed from C that is not specified here.
 ### New additions
 
 - New dynamic pointer conventions
-- `char` is unsigned by default
+- `char` is unsigned by default and is called `byte`
 - All type casting must be explicit
 
 ## Syntax
@@ -52,6 +51,22 @@ Use `import [package name] as [alias name]` to provide a shorthand for a long pa
 
 `import std.io as io`
 
+### Public and Private methods or variables
+
+Neolang uses the same semantics that golang uses when it comes to public and private variables or functions on a package level, with the first letter being upper case making any variable or method public. Everything else is unnaccessable outside of the package.
+
+### Variable and struct naming conventions
+
+Typically in neolang, all private methods are camel case with the first letter lower case, all public methods are camel case with first letter upper case, all private variables are lower case snake case, and all public variables are snake case with the first letter capitalized. Here is an example:
+
+```
+struct Database {
+    std::strings::string * Values;
+    std::io::file * file_pointer;
+    std::date Date_created;
+}
+```
+
 ### Accessing functions from a package
 
 Everything in a package is in a namespace that is that package's name or alias name. So to access the method `Print` from `std.io`, you would use this syntax:
@@ -64,17 +79,23 @@ Dynamic pointers to data must be declared using the keyword `dynamic`. For examp
 
 `dynamic int * n = new type(*n);`
 
-Because of this `malloc` and `free` have been moved to build in keywords
+Because of this `malloc` and `free` have been moved to built in keywords
 
 ### Creating new memory
 
-Due to the fact that some implementations of the standard library require the `new` function to optionally accept a byte length, it does. The syntax for doing so looks like this:
+Due to the fact that some implementations of the standard library require the `new` function to accept a byte length, it does. The syntax for doing so looks like this:
 
-`dynamic int * numbers = new type(*numbers), 3`
+`dynamic int * numbers = (int *)new 3;`
 
-After zeroing out the newly created data, it will look like the following in memory:
+After zeroing out the newly created data, it will look like this in memory:
 
 `[0,0,0]`
+
+### Deleting memory
+
+To delete `dynamic` variables, or to free them, you use the `free` keyword. Note that there are no constructors or destructors.
+
+`free numbers;`
 
 ### Template variables
 
@@ -109,8 +130,8 @@ The interface syntax is similar to golang's interface syntax, but with standard 
 
 ```
 interface Addable {
-    void add_one(int);
-    void add_three(int);
+    void AddOne(int);
+    void AddThree(int);
 }
 ```
 
