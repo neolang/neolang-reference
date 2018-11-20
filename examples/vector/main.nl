@@ -8,6 +8,6 @@ struct Vector {
 
 void Vector::AddItem(Vector * self, T newItem) {
     if(self->length == 0) {
-        self->Items = new 
+        self->Items = new //TODO <<<<< THIS
     }
 }
