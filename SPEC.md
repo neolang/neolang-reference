@@ -28,6 +28,7 @@
         keyword
         identifier
         constant
+        operator
 
     keyword: one of
         func, extern, int, byte
