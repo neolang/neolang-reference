@@ -49,9 +49,16 @@
 
     comment:
         comment-symbol any-symbol
+        comment-begin any-symbol comment-end
 
     comment-symbol:
         //
+    
+    comment-begin:
+        /*
+    
+    comment-end:
+        */
 
 ## Built in keywords
 
