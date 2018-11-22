@@ -9,57 +9,72 @@
 
 ## Lexical grammar definition
 
-    letter:
-        [a-zA-Z]
+letter:
 
-    digit:
-        [0-9]
+    [a-zA-Z]
 
-    nonzero-digit:
-        [1-9]
+digit:
 
-    operator:
-        [+-*/%]
+    [0-9]
 
-    any-symbol:
-        .*
+nonzero-digit:
 
-    token:
-        keyword
-        identifier
-        constant
-        operator
+    [1-9]
 
-    keyword: one of
-        func, extern, int, byte
+operator:
 
-    identifier:
-        identifier-nondigit
-        identifier identifier-nondigit
-        identifier digit
+    [+-*/%]
 
-    identifier-nondigit:
-        letter or _
+any-symbol:
 
-    constant:
-        integer-constant
+    .*
 
-    integer-constant:
-        nonzero-digit
-        nonzero-digit digit
+token:
 
-    comment:
-        comment-symbol any-symbol
-        comment-begin any-symbol comment-end
+    keyword
+    identifier
+    constant
+    operator
 
-    comment-symbol:
-        //
-    
-    comment-begin:
-        /*
-    
-    comment-end:
-        */
+keyword: one of
+
+    func, extern, int, byte
+
+identifier:
+
+    identifier-nondigit
+    identifier identifier-nondigit
+    identifier digit
+
+identifier-nondigit:
+
+    letter or _
+
+constant:
+
+    integer-constant
+
+integer-constant:
+
+    nonzero-digit
+    nonzero-digit digit
+
+comment:
+
+    comment-symbol any-symbol
+    comment-begin any-symbol comment-end
+
+comment-symbol:
+
+    //
+
+comment-begin:
+
+    /*
+
+comment-end:
+
+    */
 
 ## Built in keywords
 
