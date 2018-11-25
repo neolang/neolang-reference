@@ -1,11 +1,11 @@
 # Features
 
-- Integer data type
-- Byte data type
-- Functions that support recursion
+- Integer, byte, and void data types
+- Functions (no support for recursion)
 - Print function
 - Extern keyword
 - func keyword for defining functions
+
 
 ## Lexical grammar definition
 
@@ -38,7 +38,7 @@ token:
 
 keyword: one of
 
-    func, extern, int, byte
+    func, extern, int, byte, void
 
 identifier:
 
@@ -84,3 +84,4 @@ Built in keywords include the following:
     int
     func
     extern
+    void
